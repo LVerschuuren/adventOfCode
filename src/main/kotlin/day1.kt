@@ -1,7 +1,33 @@
 package AdventOfCode
 
 fun main() {
-    val input = listOf(
+        val input = input()
+        // puzzle 1
+        var counter = 0
+        input.forEachIndexed { index, element ->
+        if (index != input.lastIndex) {
+            if (input[index] < input[index+1]) {
+                counter++
+
+            }
+        }
+        }
+        println(counter)
+
+        // puzzle 1 differentt
+        val input0 = input.subList(0, input.lastIndex)
+        val input1 = input.subList(1, input.lastIndex+1)
+        var counter2 = 0
+        input0.forEachIndexed { i, value ->
+                if (value < input1[i]) {
+                       counter2++
+                }
+        }
+        println(counter2)
+
+}
+
+fun input() = listOf(
         173,
         179,
         200,
@@ -2003,15 +2029,5 @@ fun main() {
         9372,
         9380
     )
-    var counter = 0
-    input.forEachIndexed { index, element ->
-        if (index != input.lastIndex) {
-            if (input[index] < input[index+1]) {
-                counter++
-            }
-        }
-    }
-    println(counter)
-}
 
 
