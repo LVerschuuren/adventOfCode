@@ -9,7 +9,7 @@ fun main() {
         //day1Puzzle1Dif(input)
 }
 
-fun day1Puzzle1(input: List<Int>) {
+fun day1Puzzle1(input: List<Int>): Int {
         var counter = 0
         input.forEachIndexed { index, element ->
                 if (index != input.lastIndex) {
@@ -19,7 +19,7 @@ fun day1Puzzle1(input: List<Int>) {
                         }
                 }
         }
-        println(counter)
+        return counter
 }
 
 fun day1Puzzle1Try2(input: List<Int>): Int {
