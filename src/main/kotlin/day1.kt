@@ -3,12 +3,10 @@ package AdventOfCode
 fun main() {
         val input = input()
         // puzzle 1
-        day1Puzzle1(input)
+        println(day1Puzzle1Try2(input))
+        println(day1Puzzle2(input))
         // puzzle 1 differentt
-        day1Puzzle1Dif(input)
-
-
-
+        //day1Puzzle1Dif(input)
 }
 
 fun day1Puzzle1(input: List<Int>) {
@@ -23,16 +21,34 @@ fun day1Puzzle1(input: List<Int>) {
         }
         println(counter)
 }
-fun day1Puzzle1Dif(input: List<Int>) {
-        val input0 = input.subList(0, input.lastIndex)
-        val input1 = input.subList(1, input.lastIndex+1)
-        var counter2 = 0
-        input0.forEachIndexed { i, value ->
-                if (value < input1[i]) {
-                        counter2++
-                }
-        }
-        println(counter2)
+
+fun day1Puzzle1Try2(input: List<Int>): Int {
+        // count of segments higher than previous segment
+        // 173, 179, 200, 210, 226, 229
+        // [173, 179], [179, 200], [200, 210]
+        // windowed
+        // filter
+        // count
+        return input.windowed(2, 1)
+                .count { it.first() < it.last() }
+
+}
+
+fun day1Puzzle2(input: List<Int>): Int {
+        // count of segments higher than previous segment
+        // 173, 179, 200, 210, 226, 229
+        // [173, 179, 200], [179, 200,210], [200, 210, 226]
+        // 540, 550, 636
+        // windowed -> List<List<Int>>
+        // sum of group of 3 -> List<Int>
+        // windowed sum with next group [ 540, 550 ]
+        // filter
+        // count
+        return input.windowed(3, 1)
+                .map { it.sum() }
+                .windowed(2, 1)
+                .count { it.first() < it.last() }
+
 }
 
 fun input() = listOf(
